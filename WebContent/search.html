@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <!--for Bootstrap modal-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/TwitterStatuis/Style/csshake.min.css">
+
+    <link href="/TwitterStatuis/Style/style.css" rel="stylesheet" type="text/css">
+    <link href="/TwitterStatuis/Style/bootstrap-social.css" rel="stylesheet" type="text/css">
+  
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="author" content="Cher Huang">
+
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather">
+    <title>Twitter Status</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="/TwitterStatuis/Style/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+
+    <!-- Custom styles -->
+    <style>
+      body {
+        padding-top: 54px;
+      }
+      @media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      }
+      .scrollable {
+		overflow-y: scroll;
+		max-height:400px;
+		width: 95%;
+	  }
+	   
+	  .tweet {
+  		display: inline-block;
+  		padding: 16px;
+  		margin: 10px 0;
+  		max-width: 468px;
+  		border: #ddd 1px solid;
+  		border-top-color: #eee;
+  		border-bottom-color: #bbb;
+ 		border-radius: 5px;
+  		box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  		font: bold 14px/18px Helvetica, Arial, sans-serif;
+  		color: #000;
+	}
+	
+	.box {
+		border: #ddd 1px solid;
+  		border-top-color: #eee;
+  		border-bottom-color: #eee;
+  		color: #000;
+  		
+  	}
+	
+	.box:hover{
+		background: #87cefa;
+	}
+	.fa-heart {
+		color: red;
+	}
+	
+	.fa-retweet {
+		color: #87cefa;
+	}
+	
+	.tweet p {
+  		font: normal 18px/24px Georgia, "Times New Roman", Palatino, serif;
+  		margin: 0 5px 10px 0;
+	}
+	
+
+	  
+    </style>
+
+    <!--Firebase CSS -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+
+
+  </head>
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            
+           <li class="nav-item active">
+              <a class="nav-link" href="search.html">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="contact.html">Feedbacks</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+    </nav>
+  <body id="loginBody">
+    <section class="canvas-wrap">
+      <div class="canvas-content">
+      <p class="logoText" style ="font-family:Merriweather script=all rev=2;font-weight: 700;font-color:white; font-style: italic; margin-bottom:0px;">Twitter Status</p>
+      <h1 class= "subText" style="font-family:Merriweather script=all rev=2;font-weight: 300;font-color:white; font-style: italic; margin-bottom:0px;">Your latest twitter status is here.</h1>
+  </div>
+      <div id="canvas" class="gradient"></div>
+    </section>
+     <!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="/TwitterStatuis/Style/vendor/jquery/jquery.min.js"></script>
+
+<!-- Main library -->
+<script src="/TwitterStatuis/js/three.min.js"></script>
+
+<!-- Helpers -->
+<script src="/TwitterStatuis/js/projector.js"></script>
+<script src="/TwitterStatuis/js/canvas-renderer.js"></script>
+
+<!-- Visualization adjustments -->
+<script src="/TwitterStatuis/js/3d-lines-animation.js"></script>
+
+<!-- Animated background color -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="/TwitterStatuis/js/color.js"></script>
+
+<!-- Charts -->
+<script src="/TwitterStatuis/js/jquery.canvasjs.min.js"></script>
+<script src="/TwitterStatuis/js/canvasjs.min.js"></script>
+<div class="container">
+        <div class="card card-container tohide">
+            <div class="form-signin">
+         	 <div class="input-group search">
+         	 <div>
+              <input style="width:260px; height: 40px;" type="text" id="screenName" placeholder=" Screen Name: (E.g. BuzzRadar)" required autofocus>
+	   		</div>
+	   		<div class="modal-body row">
+	   				
+	   			<button id="search" class="col-md-12 mr-3 btn btn-outline-secondary" type="button">
+                  <i class="fa fa-search icon-large"></i>
+                </button>
+            
+               </div>
+            </div>
+    			
+                  </div><!-- /form -->
+          
+        </div><!-- /card-container -->
+      
+    </div><!-- /container -->
+
+</body>  
+
+<script type="text/javascript">
+$( document ).ready(function() {
+	$(".subText").toggle();
+	// var dateArray = [];
+     var valueArray = [];
+     var favoriteArray = [];
+     var retweetArray = [];
+     var favoritesScore = [];
+     var favoritesIndex = [];
+  
+	 $('#search').click(function() {
+		 var name = $("#screenName").val();
+		 	$.ajax({
+	    	 	dataType: "text",
+	         method: "POST",
+	         url: "/TwitterStatuis/Application",
+	         data:{screenName: name},
+	         success: function(data){
+	        	    alert(data);
+	        	    data = JSON.parse(data);
+	        	    jQuery(".form-signin").toggle();
+	        	 	var numUpdates = data.numOfUpdates;
+	            	var numFriends = data.numOfFriends;
+	            	var numFollowers = data.numOfFollowers;
+	            	var numFavorites = data.numOfFavorites;
+	            	var userLocation = data.userLocation;
+	            	var tweets = data.tweets;
+	            	var createdAt = new Date(data.createdAt);
+	            var lastestTweets = JSON.stringify(tweets);
+
+	            var newHTML = 
+	            	'<div class="row ">'+
+	            	'<div class="card card-container col-md-6 scrollable">'+
+		        '<div>';
+		        var date1;
+		        var date2;
+		        var days;
+		        accountCreatedAt = JSON.stringify(data.createdAt).split(" ");
+		        dateCreatedAtString = accountCreatedAt[1] +" " +accountCreatedAt[2] + " " + accountCreatedAt[5];
+		        dateCreatedAt = new Date(dateCreatedAtString);
+		        dateArray1 = JSON.stringify(tweets[0].createdAt).split(" ");
+		        dateArray2 = JSON.stringify(tweets[tweets.length-1].createdAt).split(" ");
+		        date1 = new Date(dateArray1[1] +" " +dateArray1[2] + " " + dateArray1[5]);
+		        date2 = new Date(dateArray2[1] +" " +dateArray2[2] + " " + dateArray2[5]);
+		     
+		        function getDates(d2, d1){
+	        		  var oneMonth = 24*3600*1000*31;
+	        		  for (var d=[],ms=d1*1,last=d2*1;ms<last;ms+=oneMonth){
+	        		      d.push( new Date(ms) );
+	        		      favoriteArray.push(0);
+	        		      retweetArray.push(0);
+	        		      valueArray.push(0);
+	        		      favoritesScore.push(0);
+	 		          favoritesIndex.push(0);
+	       
+	        		  }
+	        		  return d;
+	        		}
+		     
+		     	dateArray = getDates(date1, date2);
+		   
+		        var from = 0;
+		        for (var i = tweets.length -1; i > 0; i--) {
+	                var text = tweets[i].statusText;
+	                var date = tweets[i].createdAt;
+	                var createdAtArray = JSON.stringify(date).split(" ");
+	            	   
+	                var favoritesCount = tweets[i].favoritesCount;
+	                var retweetsCount = tweets[i].RetweetsCount;
+	                var hashtags = tweets[i].hashtags;
+	                var n = text.search(/@([^\s]+)/); 
+	                newHTML +=  ' <div class="tweet"><h6>'+ i+' :</h6><h8>' + date+ '</h8><p>'+ text +'</p><div>'+ '<i class="fa fa-heart"></i>'+ favoritesCount +'   '+ '<i class="fa fa-retweet"></i>'+ retweetsCount +'</div></div>';
+	                var dateString = createdAtArray[1] +" " +createdAtArray[2] + " " + createdAtArray[5] ;
+	                currentDate = new Date(dateString);
+	         	       
+	                while (currentDate > dateArray[from+1]){
+	                		from +=1;
+	                }
+	                favoriteArray[from]  += favoritesCount;
+		      	    retweetArray[from] += retweetsCount;
+	            		valueArray[from] +=1;
+	            		if (favoritesCount+retweetsCount > favoritesScore[from]){
+	            	    		favoritesScore[from] = favoritesCount+retweetsCount;
+	            	    		favoritesIndex[from] = i;
+	            	    	
+	            		}
+		        }
+		        
+		        function compareNumbers(b, a)
+		        {
+		            return a - b;
+		        }
+
+		        var toptweets = (favoritesScore.sort(compareNumbers)).slice(0,5);
+		        	today = new Date();
+		        	function DifferenceInDays(date1,date2) {
+		        	 	var one_day=1000*60*60*24;    // Convert both dates to milliseconds
+			        	var date1_ms = date1.getTime();   
+			        	var date2_ms = date2.getTime();    // Calculate the difference in milliseconds  
+			        	var difference_ms = date1_ms - date2_ms ;        // Convert back to days and return   
+			        return Math.round(difference_ms/one_day); 
+		        	}
+		        	
+		        	var days = recentDays = DifferenceInDays(date1,date2);
+		        	var lastUpdate = DifferenceInDays(today,date1);
+		        	var daysFromBeginningOfTime = DifferenceInDays(today, createdAt);
+		        	
+		        newHTML +='</div>'+
+		        '</div>'+
+	            	'<div class="card card-container col-md-6 scrollable">'+
+	            	 '<div>' +
+	            	'<div class="row">'+
+	            		'<div class="col-md-4 box"><b>location</b><br/>'+userLocation + '</div>' +
+	            		'<div class="col-md-4 box"><b>user since</b><br/>'+dateCreatedAtString.trim('"') + '</div>' +
+	            	 '<div class="col-md-4 box"><b>last update</b><br/>'+lastUpdate + ' days ago</div>' +    
+	            '</div>'+
+	            '<div class="row">'+
+	          		'<div class= "col-md-4 box"><b>num. toal status updates</b><br/>'+ numUpdates + '</div>' +
+	        			'<div class= "col-md-4 box"><b>freq. total status updates</b><br/> every ' + Math.round(10*(daysFromBeginningOfTime/numUpdates))/10 + ' days</div>' +
+	        			'<div class= "col-md-4 box"><b>freq. recent status updates</b><br/> every ' + Math.round(10*(days/20))/10 + ' days</div>' +
+	            '</div>'+
+	     
+	          
+	            '<div class="row">'+
+	            		'<div class= "col-md-4 box"><b>num. followers</b><br/>'+ numFollowers +'</div>' +
+	            		'<div class= "col-md-4 box"><b>num. friends</b><br/>'+ numFriends +'</div>' +
+	            		'<div class= "col-md-4 box"><b>ratio</b><br/>'+ Math.round(10*(numFollowers/numFriends))/10 +'</div>' +
+	            '</div>'+
+	            '<div class="row">'+
+	            		'<div class = "col-md-12 box" id="chartContainer"></div>'+
+	            '</div>'+
+	            '</div>' +
+	            '</div>' +
+	            '</div>';
+	            $(".userStatus").addClass("row");
+	        	 	$(".tohide").replaceWith(newHTML);
+	        	 	$(".logoText").toggle();
+	        	 	$(".subText").toggle();
+	        	 	 var pointsRetweet = [];
+	        	 	 var pointsTweet = [];
+	        		 var pointsFavorite = [];
+	        		 for ( i = 0; i < dateArray.length; i++){
+	        			 var displayString = "Top contributor to interactions is tweet: No." + favoritesIndex[i] + " with score: "+favoritesScore[i];
+	        			 pointsTweet.push({x:dateArray[i],y:valueArray[i],click: function(e){
+	        		           alert(displayString); }});
+	        			 pointsRetweet.push({x:dateArray[i],y:retweetArray[i],click: function(e){
+	        				   alert(displayString); }});
+	       	         pointsFavorite.push({x:dateArray[i],y:favoriteArray[i],click: function(e){
+	       	        		   alert(displayString); }});
+		        	   }
+	        		 
+	        		 var options = {
+	        		 	animationEnabled: true,
+	        		 	theme: "light2",
+	        		 	title:{
+	        		 		text: "Interactions"
+	        		 	},
+	        		 	axisX:{
+	        		 		valueFormatString: "DD MM YYYY"
+	        		 	},
+	        		 	axisY: {
+	        		 		title: "Count",
+	        		 		suffix: "",
+	        		 		minimum: 0
+	        		 	},
+	        		 	toolTip:{
+	        		 		shared:true
+	        		 	},  
+	        		 	legend:{
+	        		 		cursor:"pointer",
+	        		 		verticalAlign: "bottom",
+	        		 		horizontalAlign: "left",
+	        		 		dockInsidePlotArea: true,
+	        		 		
+	        		 	},
+	        		 	data: [{
+	        		 		type: "line",
+	        		 		showInLegend: true,
+	        		 		name: "Likes",
+	        		 		markerType: "square", 
+	        		 		color: "#F08080",
+	        		 		dataPoints: pointsFavorite
+	        		 	},
+	        		 	{
+	        		 		type: "line",
+	        		 		showInLegend: true,
+	        		 		name: "Retweets",
+	        		 		dataPoints: pointsRetweet
+	        		 	},
+	        		 	{
+	        		 		type: "line",
+	        		 		showInLegend: true,
+	        		 		name: "Tweets",
+	        		 		color: "green",
+	        		 		dataPoints: pointsTweet
+	        		 	}]
+	        		 };
+	        		 $("#chartContainer").CanvasJSChart(options);
+	        		 function toogleDataSeries(e){
+	        		 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+	        		 		e.dataSeries.visible = false;
+	        		 	} else{
+	        		 		e.dataSeries.visible = true;
+	        		 	}
+	        		 	e.chart.render();
+	        		 }
+	        	 },
+	        	 error:function(e){
+	        		alert(e.responseText);
+	        	 }
+	     });
+
+	});
+
+	
+});
+
+</script>
+
+</html>
