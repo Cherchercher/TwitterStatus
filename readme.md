@@ -15,9 +15,9 @@ Select war file to deploy on Tomcat Server
 
 ### Prerequisites
  *  [Java](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html)
- *  [Apache Web server] (https://help.ubuntu.com/lts/serverguide/httpd.html) . Open port 80.
- *  [Eclipse] (http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen2)
- *  [Tomcat] https://o7planning.org/en/10209/installing-and-configuring-tomcat-server-in-eclipse
+ *  [Apache Web server](https://help.ubuntu.com/lts/serverguide/httpd.html) . Open port 80.
+ *  [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen2)
+ *  [Tomcat](https://o7planning.org/en/10209/installing-and-configuring-tomcat-server-in-eclipse)
 
 ## Authors
 
