@@ -3,12 +3,12 @@
 Twitter Status allows users to check out latest 20 twitter status based on a screen name
 
 ## Getting Started
-##Option 1: 
+Option 1: 
 Git clone or download this repository 
 Import project to Eclipse SE
 Right click on project and select "Run on Server"
 
-##Option 2:
+Option 2:
 Download the TwitterStatus.war file in this repository
 Select war file to deploy on Tomcat Server 
 
@@ -19,9 +19,9 @@ Select war file to deploy on Tomcat Server
  *  [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen2)
  *  [Tomcat](https://o7planning.org/en/10209/installing-and-configuring-tomcat-server-in-eclipse)
 
-## Authors
+#### Author
 
 * **Cher Huang** 
 
-##Contact
+##### Contact
  xiaoxuah@uci.edu
