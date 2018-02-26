@@ -4,6 +4,8 @@
   <display-name>Twitter Status</display-name>
   <welcome-file-list>
     <welcome-file>search.html</welcome-file>
+    <welcome-file>about.html</welcome-file>
+     <welcome-file>contact.html</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
