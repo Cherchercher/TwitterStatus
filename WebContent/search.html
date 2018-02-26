@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/TwitterStatuis/js/color.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
     <!--for Bootstrap modal-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
+  
     <link rel="stylesheet" type="text/css" href="/TwitterStatuis/Style/csshake.min.css">
 
     <link href="/TwitterStatuis/Style/style.css" rel="stylesheet" type="text/css">
@@ -82,20 +87,14 @@
 
 	  
     </style>
-
-    <!--Firebase CSS -->
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-
-
-
   </head>
 <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+         <a class="navbar-brand" href="#"></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             
@@ -121,8 +120,6 @@
       <div id="canvas" class="gradient"></div>
     </section>
      <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="/TwitterStatuis/Style/vendor/jquery/jquery.min.js"></script>
 
 <!-- Main library -->
 <script src="/TwitterStatuis/js/three.min.js"></script>
@@ -135,7 +132,6 @@
 <script src="/TwitterStatuis/js/3d-lines-animation.js"></script>
 
 <!-- Animated background color -->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="/TwitterStatuis/js/color.js"></script>
 
 <!-- Charts -->
@@ -197,7 +193,7 @@ $( document ).ready(function() {
 
 	            var newHTML = 
 	            	'<div class="row ">'+
-	            	'<div class="card card-container col-md-6 scrollable">'+
+	            	'<div class="card card-container tweets col-md-6 scrollable">'+
 		        '<div>';
 		        var date1;
 		        var date2;
@@ -231,12 +227,12 @@ $( document ).ready(function() {
 	                var text = tweets[i].statusText;
 	                var date = tweets[i].createdAt;
 	                var createdAtArray = JSON.stringify(date).split(" ");
-	            	   
 	                var favoritesCount = tweets[i].favoritesCount;
 	                var retweetsCount = tweets[i].RetweetsCount;
 	                var hashtags = tweets[i].hashtags;
 	                var n = text.search(/@([^\s]+)/); 
-	                newHTML +=  ' <div class="tweet"><h6>'+ i+' :</h6><h8>' + date+ '</h8><p>'+ text +'</p><div>'+ '<i class="fa fa-heart"></i>'+ favoritesCount +'   '+ '<i class="fa fa-retweet"></i>'+ retweetsCount +'</div></div>';
+	                var id = tweets.length-i;
+	                newHTML +=  '<div class="tweet" id="' + id + '"><h8>' + date+ '</h8><p>'+ text +'</p><div>'+ '<i class="fa fa-heart"></i>'+ favoritesCount +'   '+ '<i class="fa fa-retweet"></i>'+ retweetsCount +'</div></div>';
 	                var dateString = createdAtArray[1] +" " +createdAtArray[2] + " " + createdAtArray[5] ;
 	                currentDate = new Date(dateString);
 	         	       
@@ -249,7 +245,6 @@ $( document ).ready(function() {
 	            		if (favoritesCount+retweetsCount > favoritesScore[from]){
 	            	    		favoritesScore[from] = favoritesCount+retweetsCount;
 	            	    		favoritesIndex[from] = i;
-	            	    	
 	            		}
 		        }
 		        
@@ -307,16 +302,14 @@ $( document ).ready(function() {
 	        	 	 var pointsTweet = [];
 	        		 var pointsFavorite = [];
 	        		 for ( i = 0; i < dateArray.length; i++){
-	        			 var displayString = "Top contributor to interactions is tweet: No." + favoritesIndex[i] + " with score: "+favoritesScore[i];
-	        			 pointsTweet.push({x:dateArray[i],y:valueArray[i],click: function(e){
-	        		           alert(displayString); }});
-	        			 pointsRetweet.push({x:dateArray[i],y:retweetArray[i],click: function(e){
-	        				   alert(displayString); }});
-	       	         pointsFavorite.push({x:dateArray[i],y:favoriteArray[i],click: function(e){
-	       	        		   alert(displayString); }});
+	        			 pointsTweet.push({x:dateArray[i],y:valueArray[i],click: onClick});
+	        			 pointsRetweet.push({x:dateArray[i],y:retweetArray[i],click: onClick});
+	       	         pointsFavorite.push({x:dateArray[i],y:favoriteArray[i],click: onClick});
 		        	   }
 	        		 
-	        		 var options = {
+	        		 var chart = new CanvasJS.Chart("chartContainer",
+	        		 {
+	        		 
 	        		 	animationEnabled: true,
 	        		 	theme: "light2",
 	        		 	title:{
@@ -361,25 +354,18 @@ $( document ).ready(function() {
 	        		 		color: "green",
 	        		 		dataPoints: pointsTweet
 	        		 	}]
-	        		 };
-	        		 $("#chartContainer").CanvasJSChart(options);
-	        		 function toogleDataSeries(e){
-	        		 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-	        		 		e.dataSeries.visible = false;
-	        		 	} else{
-	        		 		e.dataSeries.visible = true;
-	        		 	}
-	        		 	e.chart.render();
-	        		 }
-	        	 },
-	        	 error:function(e){
-	        		alert(e.responseText);
-	        	 }
-	     });
-
+	        		 });
+	        		 chart.render();
+	        		 var id = 20;
+	        		 function onClick(e){
+	        			 var displayString = "Top contributor to interactions is tweet: No." + favoritesIndex[dateArray.length-1 - e.dataPointIndex] + " with score: "+favoritesScore[dateArray.length-1 - e.dataPointIndex];
+	        			 alert(displayString);
+	        			 id = '"#'+favoritesIndex[dateArray.length-1 - e.dataPointIndex]+'"';
+	        			
+	        		   }
+	        		}
+		});
 	});
-
-	
 });
 
 </script>

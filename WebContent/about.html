@@ -43,75 +43,37 @@
   </head>
 <body>
        <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Plan A Trip</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+         <a class="navbar-brand" href="#"></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">My Trips</a>
-            </li>
-             <li class="nav-item">
-              <a class="nav-link" href="#">Explore</a>
+            
+           <li class="nav-item active">
+              <a class="nav-link" href="search.html">Search</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="about.html">About</a>
             </li>
               <li class="nav-item">
-              <a class="nav-link" onclick="firebase.auth().signOut();" href="#">Sign Out</a>
+              <a class="nav-link" href="contact.html">Feedbacks</a>
             </li>
           </ul>
         </div>
       </div> 
     </nav>
-		<div class="contain">
-        		<img src="img/cover.jpg" class="Cover-image" alt="cover image" />   
-          	<div class="centered">
-            <p class="intro"> 
-                What is Plan A Trip: Plan A Trip is a smart online travel agency.
-                How it works: To get started, simply like or save a place. Every time you or your friends plan a trip, our smarts algorithms learns better how to make a recommendations. 
-                Why plan a trip with us:  We believe that travel planning should be fun and hassle free. That's why we collect all travel content from all around the world, but only present you the most interesting destinations and activities.
-                We solve the complextion of budget, scheduling, activity planning for you, so you enjoy your trip to the fullest.
-            </p>
-            <p> Plan A Trip is the only online travel planner that connects the dots. </p>
-            <p> Be informed. Explore. Have fun. </p>
-            <p> Free Beta Version:	
-            </p>
-          </div>
-      </div>
-</body>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script> 
-    var config = {
-		    apiKey: "AIzaSyA-R-CazbrrHwmMP23iCSp9ozrLL7kGr7s",
-			authDomain: "plan-a-trip-168808.firebaseapp.com",
-			databaseURL: "https://plan-a-trip-168808.firebaseio.com",
-		    projectId: "plan-a-trip-168808",
-			storageBucket: "plan-a-trip-168808.appspot.com",
-			messagingSenderId: "308773235898"
-  };
-  firebase.initializeApp(config);
-    window.onload=function() {
-        firebase.auth().onAuthStateChanged(function(currentUser) {
-          if(currentUser) {
-            var currUserId=currentUser.uid;
-            console.log(currentUser);
-          } else {
-            window.location='login.html';
-          }
-        });
-      }
-    </script>
+    <div class="container">
+        <div class="card card-container tohide">
+        		<h1>About</h1>
+    			<p> Twitter Status allows users to check out latest 20 twitter status based on a screen name (link to explain) with queried user's location, user since, date of last update, total status updates since beginning of time, frequency of total status updates, frequency of recent status updates, number of followers, number of friends, and followers to friend to ratio. </br>
+    			Users can also visualize how post counts correlate with like and Retweet counts. </br> When a data point on graph is clicked, the top Tweet that contributed to most likes and retweets of the month will be returned. The tweets container will scroll to corresponding Tweet automatically.   </p>
+        </div><!-- /card-container -->
+      
+    </div><!-- /container -->
+
+</body>  
+
 </html>
