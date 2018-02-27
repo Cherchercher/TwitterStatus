@@ -29,5 +29,5 @@ Twitter API allows for 180 requests per 15-min window (user auth)
 
 1.Users who interacts the most with current user will be returned.  
 
-2.Time of day, and date of time where interactions spike will be returned.
+2.Time of day, and day of week where interactions spike will be returned.
      
