@@ -21,7 +21,7 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 2. When a data point on graph is clicked, the top Tweet that contributed to most likes and retweets of the month will be returned. 
 
-##Limits
+## Limits
 
 Twitter API allows for 180 requests per 15-min window (user auth)
 
