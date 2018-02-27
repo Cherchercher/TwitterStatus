@@ -8,8 +8,8 @@ Twitter Status allows users to check out latest 20 twitter status based on a scr
 Make sure you have Java and Maven installed.  Also, install the [Heroku CLI](https://cli.heroku.com/).
 
 ```sh
-$ git clone https://github.com/heroku/java-getting-started.git
-$ cd java-getting-started
+$ git clone https://github.com/Cherchercher/TwitterStatus
+$ cd TwitterStatus
 $ mvn install
 $ heroku local:start
 ```
