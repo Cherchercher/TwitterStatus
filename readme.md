@@ -1,7 +1,7 @@
 # Twitter Status
 
 Twitter Status allows users to check out latest 20 twitter status based on a screen name
-[Link to App](https://cli.heroku.com/)https://hidden-reef-17988.herokuapp.com/)
+[Link to App](https://hidden-reef-17988.herokuapp.com/)
 
 ## Running Locally
 
@@ -21,7 +21,7 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 2. When a data point on graph is clicked, the top Tweet that contributed to most likes and retweets of the month will be returned. 
 
-## Coming Soon (with Twitter Account Activity API) : 
+## Coming Soon (with Twitter Account Activity API Beta Version) : 
 1.Users who interacts the most with current user will be returned.  
 
 2.Time of day, and date of time where interactions spike will be returned.
