@@ -1,27 +1,28 @@
 # Twitter Status
 
 Twitter Status allows users to check out latest 20 twitter status based on a screen name
+[Link to App](https://cli.heroku.com/)https://hidden-reef-17988.herokuapp.com/)
 
-## Getting Started
-Option 1: 
-Git clone or download this repository 
-Import project to Eclipse SE
-Right click on project and select "Run on Server"
+## Running Locally
 
-Option 2:
-Download the TwitterStatus.war file in this repository
-Select war file to deploy on Tomcat Server 
+Make sure you have Java and Maven installed.  Also, install the [Heroku CLI](https://cli.heroku.com/).
 
+```sh
+$ git clone https://github.com/heroku/java-getting-started.git
+$ cd java-getting-started
+$ mvn install
+$ heroku local:start
+```
 
-### Prerequisites
- *  [Java](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html)
- *  [Apache Web server](https://help.ubuntu.com/lts/serverguide/httpd.html) . Open port 80.
- *  [Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen2)
- *  [Tomcat](https://o7planning.org/en/10209/installing-and-configuring-tomcat-server-in-eclipse)
+Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-#### Author
+## Features
+1. In addition to users' latest activity, location, and friends/followers stats,	users can also visualize how post counts correlate with like and Retweet counts. 
 
-* **Cher Huang** 
+2. When a data point on graph is clicked, the top Tweet that contributed to most likes and retweets of the month will be returned. 
 
-##### Contact
- xiaoxuah@uci.edu
+## Coming Soon (with Twitter Account Activity API) : 
+1.Users who interacts the most with current user will be returned.  
+
+2.Time of day, and date of time where interactions spike will be returned.
+     

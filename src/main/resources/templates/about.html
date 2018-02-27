@@ -4,31 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="/TwitterStatuis/js/color.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
-    <!--for Bootstrap modal-->
-  
-    <link rel="stylesheet" type="text/css" href="/TwitterStatuis/Style/csshake.min.css">
-
-    <link href="/TwitterStatuis/Style/style.css" rel="stylesheet" type="text/css">
-    <link href="/TwitterStatuis/Style/bootstrap-social.css" rel="stylesheet" type="text/css">
-  
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <meta name="author" content="Cher Huang">
-
-
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather">
-    <title>About</title>
     
-    <!-- Bootstrap core CSS -->
-    <link href="/TwitterStatuis/Style/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles -->
+    <!-- jQuery library -->
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+	 
+	 <!-- Bootstrap CSS-->
+ 	<link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
+	
+	 <!-- Bootstrap javascript-->
+	<script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+	<!-- scrollTo jQuery -->
+	 
+	<!-- Charts -->
+	<script src="js/jquery.canvasjs.min.js"></script>
+	<script src="js/canvasjs.min.js"></script>
+	
+	<!-- Style -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/csshake.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/bootstrap-social.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/4.1.0/css/font-awesome.min.css"/>
+    <meta name="author" content="Cher Huang">
+    <title>About Twitter Status</title>
+    
 
     <!-- Custom styles -->
     <style>
@@ -40,21 +40,56 @@
           padding-top: 56px;
         }
       }
+      .scrollable {
+		overflow-y: scroll;
+		max-height:400px;
+		width: 95%;
+	  }
+	   
+	  .tweet {
+  		display: inline-block;
+  		padding: 16px;
+  		margin: 10px 0;
+  		max-width: 468px;
+  		border: #ddd 1px solid;
+  		border-top-color: #eee;
+  		border-bottom-color: #bbb;
+ 		border-radius: 5px;
+  		box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  		font: bold 14px/18px Helvetica, Arial, sans-serif;
+  		color: #000;
+	}
+	
+	.box {
+		border: #ddd 1px solid;
+  		border-top-color: #eee;
+  		border-bottom-color: #eee;
+  		color: #000;
+  		
+  	}
+	
+	.box:hover{
+		background: #87cefa;
+	}
+	.fa-heart {
+		color: red;
+	}
+	
+	.fa-retweet {
+		color: #87cefa;
+	}
+	
+	.tweet p {
+  		font: normal 18px/24px Georgia, "Times New Roman", Palatino, serif;
+  		margin: 0 5px 10px 0;
+	}
+	
 
-      .black {
-       color:white;
-      }
-
-      .options{
-       margin-top:10px; 
-      }
- 
-
+	  
     </style>
-
   </head>
 <body>
-       <!-- Navigation -->
+     <!-- Navigation -->
      <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,7 +116,8 @@
     			<p> 		Twitter Status allows users to check out latest 20 twitter status based on a screen name (link to explain) </p>
     			<p> 		Users can also visualize how post counts correlate with like and Retweet counts. </p>
     			<p>		When a data point on graph is clicked, the top Tweet that contributed to most likes and retweets of the month will be returned. </p>
-    			<p>	    The tweets container will scroll to corresponding Tweet automatically. </p>
+    			<p>	    Coming Soon : Users who interacts the most with current user will be returned.  </p>
+        		<p>	    Coming Soon : Time of day, and date of time where interactions spike will be returned.  </p>
         </div><!-- /card-container -->
       
     </div><!-- /container -->

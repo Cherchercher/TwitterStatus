@@ -4,29 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    
     <!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="/TwitterStatuis/js/color.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
-    <!--for Bootstrap modal-->
-  
-    <link rel="stylesheet" type="text/css" href="/TwitterStatuis/Style/csshake.min.css">
-
-    <link href="/TwitterStatuis/Style/style.css" rel="stylesheet" type="text/css">
-    <link href="/TwitterStatuis/Style/bootstrap-social.css" rel="stylesheet" type="text/css">
-  
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+	 
+	 <!-- Bootstrap CSS-->
+ 	<link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
+	
+	 <!-- Bootstrap javascript-->
+	<script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+	<!-- scrollTo jQuery -->
+	 
+	<!-- Charts -->
+	<script src="js/jquery.canvasjs.min.js"></script>
+	<script src="js/canvasjs.min.js"></script>
+	
+	<!-- Style -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/csshake.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/bootstrap-social.css" rel="stylesheet" type="text/css">
+    <link href="stylesheets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/4.1.0/css/font-awesome.min.css"/>
     <meta name="author" content="Cher Huang">
-
-
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather">
     <title>Twitter Status</title>
     
-
-    <!-- Custom styles -->
 
     <!-- Custom styles -->
     <style>
@@ -87,53 +89,47 @@
     </style>
   </head>
 <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container">
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          	<span class="navbar-toggler-icon"></span>
         </button>
-         <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="#"></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            
-           <li class="nav-item active">
-              <a class="nav-link" href="search.html">Search</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-            </li>
-            
-          </ul>
+        		<ul class="navbar-nav ml-auto">
+             	<li class="nav-item active">
+              		<a class="nav-link" href="search.html">Search</a>
+            		</li>
+            		<li class="nav-item">
+             		 <a class="nav-link" href="about.html">About</a>
+            		</li>
+              	<li class="nav-item">
+             		 <a class="nav-link" href="contact.html">Feedbacks</a>
+            		</li>
+         	</ul>
         </div>
       </div> 
     </nav>
-  <body id="loginBody">
-    <section class="canvas-wrap">
-      <div class="canvas-content">
-      <p class="logoText" style ="font-family:Merriweather script=all rev=2;font-weight: 700;font-color:white; font-style: italic; margin-bottom:0px;">Twitter Status</p>
-      <h1 class= "subText" style="font-family:Merriweather script=all rev=2;font-weight: 300;font-color:white; font-style: italic; margin-bottom:0px;">Your latest twitter status is here.</h1>
-  </div>
-      <div id="canvas" class="gradient"></div>
-    </section>
-     <!-- Bootstrap core JavaScript -->
+<body id="loginBody">
+    		<section class="canvas-wrap">
+      		<div class="canvas-content">
+      			<p class="logoText" style ="font-family:Merriweather script=all rev=2;font-weight: 700;font-color:white; font-style: italic; margin-bottom:0px;">Twitter Status</p>
+      			<h1 class= "subText" style="font-family:Merriweather script=all rev=2;font-weight: 300;font-color:white; font-style: italic; margin-bottom:0px;">Your latest twitter status is here.</h1>
+  			</div>
+      		<div id="canvas" class="gradient"></div>
+    		</section>
+    	 <!-- Three.js-->
+	<script src="js/three.min.js"></script>
+	<!-- Helpers -->
+	<script src="js/projector.js"></script>
+	<script src="js/canvas-renderer.js"></script>
 
-<!-- Main library -->
-<script src="/TwitterStatuis/js/three.min.js"></script>
+	<!-- Visualization adjustments -->
+	<script src="js/3d-lines-animation.js"></script>
 
-<!-- Helpers -->
-<script src="/TwitterStatuis/js/projector.js"></script>
-<script src="/TwitterStatuis/js/canvas-renderer.js"></script>
-
-<!-- Visualization adjustments -->
-<script src="/TwitterStatuis/js/3d-lines-animation.js"></script>
-
-<!-- Animated background color -->
-<script src="/TwitterStatuis/js/color.js"></script>
-
-<!-- Charts -->
-<script src="/TwitterStatuis/js/jquery.canvasjs.min.js"></script>
-<script src="/TwitterStatuis/js/canvasjs.min.js"></script>
-<div class="container">
+	<!-- Animated background color -->
+	<script src="js/color.js"></script>
+	<div class="container">
         <div class="card card-container tohide">
             <div class="form-signin">
          	 	<div class="input-group search">
@@ -141,7 +137,7 @@
              			<input style="width:260px; height: 40px;" type="text" id="screenName" placeholder=" Screen Name: (E.g. BuzzRadar)" required autofocus>
 	   				</div>
 	   				<div class="modal-body row">	
-	   					<button id="search" class="col-md-12 mr-3 btn btn-outline-secondary" type="button">
+	   					<button id="search" class="col-md-12 mr-3 btn btn-outline-secondary" style="height: 40px;" type="button">
                   			<i class="fa fa-search icon-large"></i>
                			</button>
             			</div>
@@ -149,9 +145,8 @@
              </div><!-- /form -->  
         </div><!-- /card-container --> 
     </div><!-- /container -->
-
 </body>  
-
+   
 <script type="text/javascript">
 $( document ).ready(function() {
 	$(".subText").toggle();
@@ -166,8 +161,8 @@ $( document ).ready(function() {
 		 var name = $("#screenName").val();
 		 	$.ajax({
 	    	 	dataType: "text",
-	         method: "POST",
-	         url: "/TwitterStatuis/Application",
+	         method: "GET",
+	         url: "/api/search",
 	         data:{screenName: name},
 	         success: function(data){
 	        	    alert(data);
@@ -200,7 +195,8 @@ $( document ).ready(function() {
 		        function getDates(d2, d1){
 	        		  var oneMonth = 24*3600*1000*31;
 	        		  for (var d=[],ms=d1*1,last=d2*1;ms<last;ms+=oneMonth){
-	        		      d.push( new Date(ms) );
+	        			  var adate = new Date(ms) 
+	        		      d.push(adate);
 	        		      favoriteArray.push(0);
 	        		      retweetArray.push(0);
 	        		      valueArray.push(0);
@@ -211,8 +207,18 @@ $( document ).ready(function() {
 	        		  return d;
 	        		}
 		     
+		        
+		        function getdDates(d2, d1){
+	        		  var oneMonth = 24*3600*1000*31;
+	        		  for (var d=[],ms=d1*1,last=d2*1;ms<last;ms+=oneMonth){
+	        			  var adate = new Date(ms) 
+	        		      d.push( new Date(adate.getFullYear(), adate.getMonth()););
+
+	        		  }
+	        		  return d;
+	        		}
 		     	dateArray = getDates(date1, date2);
-		   
+		        ddateArray = getdDates(date1, date2);
 		        var from = 0;
 		        for (var i = tweets.length -1; i > 0; i--) {
 	                var text = tweets[i].statusText;
@@ -293,9 +299,9 @@ $( document ).ready(function() {
 	        	 	 var pointsTweet = [];
 	        		 var pointsFavorite = [];
 	        		 for ( i = 0; i < dateArray.length; i++){
-	        			 pointsTweet.push({x:dateArray[i],y:valueArray[i],click: onClick});
-	        			 pointsRetweet.push({x:dateArray[i],y:retweetArray[i],click: onClick});
-	       	         pointsFavorite.push({x:dateArray[i],y:favoriteArray[i],click: onClick});
+	        			 pointsTweet.push({x:ddateArray[i],y:valueArray[i],click: onClick});
+	        			 pointsRetweet.push({x:ddateArray[i],y:retweetArray[i],click: onClick});
+	       	         pointsFavorite.push({x:ddateArray[i],y:favoriteArray[i],click: onClick});
 		        	   }
 	        		 
 	        		 var chart = new CanvasJS.Chart("chartContainer",
@@ -307,7 +313,7 @@ $( document ).ready(function() {
 	        		 		text: "Interactions"
 	        		 	},
 	        		 	axisX:{
-	        		 		valueFormatString: "DD MM YYYY"
+	        		 		valueFormatString: "MM YYYY"
 	        		 	},
 	        		 	axisY: {
 	        		 		title: "Count",
@@ -347,14 +353,13 @@ $( document ).ready(function() {
 	        		 	}]
 	        		 });
 	        		 chart.render();
-	        		 var id = 20;
+	        		
 	        		 function onClick(e){
 	        			 var displayString = "Top contributor to interactions is tweet: No." + favoritesIndex[dateArray.length-1 - e.dataPointIndex] + " with score: "+favoritesScore[dateArray.length-1 - e.dataPointIndex];
 	        			 alert(displayString);
-	        			 id = '"#'+favoritesIndex[dateArray.length-1 - e.dataPointIndex]+'"';
-	        			
-	        		   }
-	        		}
+	        		 }
+	        		 
+	          }
 		});
 	});
 });
