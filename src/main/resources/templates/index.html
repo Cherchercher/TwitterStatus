@@ -165,7 +165,7 @@ $( document ).ready(function() {
 	         url: "/api/search",
 	         data:{screenName: name},
 	         success: function(data){
-	        	    alert(data);
+	        	    alert("Query sent");
 	        	    data = JSON.parse(data);
 	        	    jQuery(".form-signin").toggle();
 	        	 	var numUpdates = data.numOfUpdates;
@@ -212,8 +212,7 @@ $( document ).ready(function() {
 	        		  var oneMonth = 24*3600*1000*31;
 	        		  for (var d=[],ms=d1*1,last=d2*1;ms<last;ms+=oneMonth){
 	        			  var adate = new Date(ms) 
-	        		      d.push( new Date(adate.getFullYear(), adate.getMonth()););
-
+	        		      d.push( new Date(adate.getFullYear(), adate.getMonth()));
 	        		  }
 	        		  return d;
 	        		}
