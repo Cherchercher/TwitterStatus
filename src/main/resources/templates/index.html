@@ -103,9 +103,6 @@
             		<li class="nav-item">
              		 <a class="nav-link" href="about.html">About</a>
             		</li>
-              	<li class="nav-item">
-             		 <a class="nav-link" href="contact.html">Feedbacks</a>
-            		</li>
          	</ul>
         </div>
       </div> 
@@ -132,16 +129,8 @@
 	<div class="container">
         <div class="card card-container tohide">
             <div class="form-signin">
-         	 	<div class="input-group search">
-         	 		<div>
-             			<input style="width:260px; height: 40px;" type="text" id="screenName" placeholder=" Screen Name: (E.g. BuzzRadar)" required autofocus>
-	   				</div>
-	   				<div class="modal-body row">	
-	   					<button id="search" class="col-md-12 mr-3 btn btn-outline-secondary" style="height: 40px;" type="button">
-                  			<i class="fa fa-search icon-large"></i>
-               			</button>
-            			</div>
-            		</div>
+  				<input style="width:260px; height: 40px;float:left;" type="text" id="screenName" placeholder=" Screen Name: (E.g. BuzzRadar)" required autofocus>
+	   			<span id="search" style="height: 40px;" class="fa fa-search icon-large btn btn-outline-secondary" ></span>		
              </div><!-- /form -->  
         </div><!-- /card-container --> 
     </div><!-- /container -->
@@ -149,7 +138,6 @@
    
 <script type="text/javascript">
 $( document ).ready(function() {
-	$(".subText").toggle();
 	// var dateArray = [];
      var valueArray = [];
      var favoriteArray = [];
@@ -158,14 +146,17 @@ $( document ).ready(function() {
      var favoritesIndex = [];
   
 	 $('#search').click(function() {
+		 alert("Query sent");
 		 var name = $("#screenName").val();
 		 	$.ajax({
 	    	 	dataType: "text",
 	         method: "GET",
 	         url: "/api/search",
 	         data:{screenName: name},
+	         error: function(request,status,errorThrown) {
+	         	alert(request.responseText);
+	        	 },
 	         success: function(data){
-	        	    alert("Query sent");
 	        	    data = JSON.parse(data);
 	        	    jQuery(".form-signin").toggle();
 	        	 	var numUpdates = data.numOfUpdates;
@@ -202,7 +193,6 @@ $( document ).ready(function() {
 	        		      valueArray.push(0);
 	        		      favoritesScore.push(0);
 	 		          favoritesIndex.push(0);
-	       
 	        		  }
 	        		  return d;
 	        		}
@@ -230,8 +220,7 @@ $( document ).ready(function() {
 	                var id = tweets.length-i;
 	                newHTML +=  '<div class="tweet" id="' + id + '"><h8>' + date+ '</h8><p>'+ text +'</p><div>'+ '<i class="fa fa-heart"></i>'+ favoritesCount +'   '+ '<i class="fa fa-retweet"></i>'+ retweetsCount +'</div></div>';
 	                var dateString = createdAtArray[1] +" " +createdAtArray[2] + " " + createdAtArray[5] ;
-	                currentDate = new Date(dateString);
-	         	       
+	                currentDate = new Date(dateString);   
 	                while (currentDate > dateArray[from+1]){
 	                		from +=1;
 	                }
@@ -277,8 +266,6 @@ $( document ).ready(function() {
 	        			'<div class= "col-md-4 box"><b>freq. total status updates</b><br/> every ' + Math.round(10*(daysFromBeginningOfTime/numUpdates))/10 + ' days</div>' +
 	        			'<div class= "col-md-4 box"><b>freq. recent status updates</b><br/> every ' + Math.round(10*(days/20))/10 + ' days</div>' +
 	            '</div>'+
-	     
-	          
 	            '<div class="row">'+
 	            		'<div class= "col-md-4 box"><b>num. followers</b><br/>'+ numFollowers +'</div>' +
 	            		'<div class= "col-md-4 box"><b>num. friends</b><br/>'+ numFriends +'</div>' +

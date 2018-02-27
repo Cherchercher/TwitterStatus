@@ -21,7 +21,12 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 2. When a data point on graph is clicked, the top Tweet that contributed to most likes and retweets of the month will be returned. 
 
+##Limits
+
+Twitter API allows for 180 requests per 15-min window (user auth)
+
 ## Coming Soon (with Twitter Account Activity API Beta Version) : 
+
 1.Users who interacts the most with current user will be returned.  
 
 2.Time of day, and date of time where interactions spike will be returned.

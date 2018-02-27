@@ -103,9 +103,6 @@
             		<li class="nav-item">
              		 <a class="nav-link" href="about.html">About</a>
             		</li>
-              	<li class="nav-item">
-             		 <a class="nav-link" href="contact.html">Feedbacks</a>
-            		</li>
          	</ul>
         </div>
       </div> 
@@ -132,16 +129,8 @@
 	<div class="container">
         <div class="card card-container tohide">
             <div class="form-signin">
-         	 	<div class="input-group search">
-         	 		<div>
-             			<input style="width:260px; height: 40px;" type="text" id="screenName" placeholder=" Screen Name: (E.g. BuzzRadar)" required autofocus>
-	   				</div>
-	   				<div class="modal-body row">	
-	   					<button id="search" class="col-md-12 mr-3 btn btn-outline-secondary" type="button">
-                  			<i class="fa fa-search icon-large"></i>
-               			</button>
-            			</div>
-            		</div>
+  				<input style="width:260px; height: 40px;float:left;" type="text" id="screenName" placeholder=" Screen Name: (E.g. BuzzRadar)" required autofocus>
+	   			<span id="search" style="height: 40px;" class="fa fa-search icon-large btn btn-outline-secondary" ></span>		
              </div><!-- /form -->  
         </div><!-- /card-container --> 
     </div><!-- /container -->
@@ -149,7 +138,6 @@
    
 <script type="text/javascript">
 $( document ).ready(function() {
-	$(".subText").toggle();
 	// var dateArray = [];
      var valueArray = [];
      var favoriteArray = [];
@@ -158,14 +146,17 @@ $( document ).ready(function() {
      var favoritesIndex = [];
   
 	 $('#search').click(function() {
+		 alert("Query sent");
 		 var name = $("#screenName").val();
 		 	$.ajax({
 	    	 	dataType: "text",
 	         method: "GET",
 	         url: "/api/search",
 	         data:{screenName: name},
+	         error: function(request,status,errorThrown) {
+	         	alert(request.responseText);
+	        	 },
 	         success: function(data){
-	        	    alert(data);
 	        	    data = JSON.parse(data);
 	        	    jQuery(".form-signin").toggle();
 	        	 	var numUpdates = data.numOfUpdates;
@@ -195,19 +186,28 @@ $( document ).ready(function() {
 		        function getDates(d2, d1){
 	        		  var oneMonth = 24*3600*1000*31;
 	        		  for (var d=[],ms=d1*1,last=d2*1;ms<last;ms+=oneMonth){
-	        		      d.push( new Date(ms) );
+	        			  var adate = new Date(ms) 
+	        		      d.push(adate);
 	        		      favoriteArray.push(0);
 	        		      retweetArray.push(0);
 	        		      valueArray.push(0);
 	        		      favoritesScore.push(0);
 	 		          favoritesIndex.push(0);
-	       
 	        		  }
 	        		  return d;
 	        		}
 		     
+		        
+		        function getdDates(d2, d1){
+	        		  var oneMonth = 24*3600*1000*31;
+	        		  for (var d=[],ms=d1*1,last=d2*1;ms<last;ms+=oneMonth){
+	        			  var adate = new Date(ms) 
+	        		      d.push( new Date(adate.getFullYear(), adate.getMonth()));
+	        		  }
+	        		  return d;
+	        		}
 		     	dateArray = getDates(date1, date2);
-		   
+		        ddateArray = getdDates(date1, date2);
 		        var from = 0;
 		        for (var i = tweets.length -1; i > 0; i--) {
 	                var text = tweets[i].statusText;
@@ -220,8 +220,7 @@ $( document ).ready(function() {
 	                var id = tweets.length-i;
 	                newHTML +=  '<div class="tweet" id="' + id + '"><h8>' + date+ '</h8><p>'+ text +'</p><div>'+ '<i class="fa fa-heart"></i>'+ favoritesCount +'   '+ '<i class="fa fa-retweet"></i>'+ retweetsCount +'</div></div>';
 	                var dateString = createdAtArray[1] +" " +createdAtArray[2] + " " + createdAtArray[5] ;
-	                currentDate = new Date(dateString);
-	         	       
+	                currentDate = new Date(dateString);   
 	                while (currentDate > dateArray[from+1]){
 	                		from +=1;
 	                }
@@ -267,8 +266,6 @@ $( document ).ready(function() {
 	        			'<div class= "col-md-4 box"><b>freq. total status updates</b><br/> every ' + Math.round(10*(daysFromBeginningOfTime/numUpdates))/10 + ' days</div>' +
 	        			'<div class= "col-md-4 box"><b>freq. recent status updates</b><br/> every ' + Math.round(10*(days/20))/10 + ' days</div>' +
 	            '</div>'+
-	     
-	          
 	            '<div class="row">'+
 	            		'<div class= "col-md-4 box"><b>num. followers</b><br/>'+ numFollowers +'</div>' +
 	            		'<div class= "col-md-4 box"><b>num. friends</b><br/>'+ numFriends +'</div>' +
@@ -288,9 +285,9 @@ $( document ).ready(function() {
 	        	 	 var pointsTweet = [];
 	        		 var pointsFavorite = [];
 	        		 for ( i = 0; i < dateArray.length; i++){
-	        			 pointsTweet.push({x:dateArray[i],y:valueArray[i],click: onClick});
-	        			 pointsRetweet.push({x:dateArray[i],y:retweetArray[i],click: onClick});
-	       	         pointsFavorite.push({x:dateArray[i],y:favoriteArray[i],click: onClick});
+	        			 pointsTweet.push({x:ddateArray[i],y:valueArray[i],click: onClick});
+	        			 pointsRetweet.push({x:ddateArray[i],y:retweetArray[i],click: onClick});
+	       	         pointsFavorite.push({x:ddateArray[i],y:favoriteArray[i],click: onClick});
 		        	   }
 	        		 
 	        		 var chart = new CanvasJS.Chart("chartContainer",
@@ -302,7 +299,7 @@ $( document ).ready(function() {
 	        		 		text: "Interactions"
 	        		 	},
 	        		 	axisX:{
-	        		 		valueFormatString: "DD MM YYYY"
+	        		 		valueFormatString: "MM YYYY"
 	        		 	},
 	        		 	axisY: {
 	        		 		title: "Count",
@@ -342,11 +339,10 @@ $( document ).ready(function() {
 	        		 	}]
 	        		 });
 	        		 chart.render();
-	        		 var id = "";
+	        		
 	        		 function onClick(e){
 	        			 var displayString = "Top contributor to interactions is tweet: No." + favoritesIndex[dateArray.length-1 - e.dataPointIndex] + " with score: "+favoritesScore[dateArray.length-1 - e.dataPointIndex];
 	        			 alert(displayString);
-	        			 id = '"#'+favoritesIndex[dateArray.length-1 - e.dataPointIndex]+'"';
 	        		 }
 	        		 
 	          }
