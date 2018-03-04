@@ -1,7 +1,9 @@
 # Twitter Status
 
-Twitter Status allows users to check out latest 20 twitter status based on a screen name
-[Link to App](https://hidden-reef-17988.herokuapp.com/)
+[Link to App](https://twitterstatus.herokuapp.com/)
+
+Twitter Status allows users to check out latest 20 twitter status based on a [screen name](https://stackoverflow.com/questions/45951589/twitter-api-what-is-the-difference-between-name-and-screen-name-which-one)
+
 
 ## Running Locally
 
